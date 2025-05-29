@@ -17,6 +17,7 @@ interface AIAssistantProps {
 const AIAssistant: React.FC<AIAssistantProps> = ({ expenses, summary }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [analysis, setAnalysis] = useState<AIAnalysis>({ insights: [], suggestions: [], loading: true });
+  const [isGettingMoreInsights, setIsGettingMoreInsights] = useState(false);
   
   useEffect(() => {
     if (expenses.length > 0) {
@@ -30,6 +31,25 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ expenses, summary }) => {
       setAnalysis({ insights: [], suggestions: [], loading: false });
     }
   }, [expenses, summary]);
+
+  const handleGetMoreInsights = async () => {
+    setIsGettingMoreInsights(true);
+    
+    try {
+      const { getMoreInsights } = await import('@/utils/aiUtils');
+      const moreAnalysis = await getMoreInsights(expenses, summary);
+      
+      setAnalysis(prev => ({
+        insights: [...prev.insights, ...moreAnalysis.insights],
+        suggestions: [...prev.suggestions, ...moreAnalysis.suggestions],
+        loading: false
+      }));
+    } catch (error) {
+      console.error('Error getting more insights:', error);
+    } finally {
+      setIsGettingMoreInsights(false);
+    }
+  };
 
   const toggleExpanded = () => {
     setIsExpanded(prev => !prev);
@@ -124,9 +144,22 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ expenses, summary }) => {
             <Separator className="bg-gray-200 dark:bg-gray-700" />
             
             <div className="p-4">
-              <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium shadow-lg">
-                <Sparkles className="h-4 w-4 mr-2" />
-                Obter Mais Insights
+              <Button 
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium shadow-lg disabled:opacity-50"
+                onClick={handleGetMoreInsights}
+                disabled={isGettingMoreInsights || expenses.length === 0}
+              >
+                {isGettingMoreInsights ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    Analisando...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Obter Mais Insights
+                  </>
+                )}
               </Button>
             </div>
           </>
