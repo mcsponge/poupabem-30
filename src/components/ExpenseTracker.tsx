@@ -46,13 +46,13 @@ const ExpenseTracker: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 dark:from-gray-900 dark:via-purple-900 dark:to-violet-900 transition-all duration-500">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-500">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-white animate-fade-in">Poupabem</h1>
-            <p className="text-white/80 mt-1 animate-fade-in animate-delay-100">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white animate-fade-in">Poupabem</h1>
+            <p className="text-gray-600 dark:text-gray-300 mt-1 animate-fade-in animate-delay-100">
               Controle inteligente de despesas
             </p>
           </div>
@@ -62,9 +62,9 @@ const ExpenseTracker: React.FC = () => {
               variant="outline" 
               size="icon"
               onClick={toggleDarkMode}
-              className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30"
+              className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
-              {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {isDarkMode ? <Sun className="h-4 w-4 text-yellow-500" /> : <Moon className="h-4 w-4 text-blue-500" />}
             </Button>
             <ExpenseForm onAddExpense={handleAddExpense} />
           </div>
