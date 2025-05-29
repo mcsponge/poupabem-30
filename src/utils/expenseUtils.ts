@@ -1,14 +1,13 @@
-
 import { Expense, ExpenseSummary } from '../types';
 
 export const defaultCategories = [
-  { id: '1', name: 'Alimentação', color: '#EF4444' },
-  { id: '2', name: 'Transporte', color: '#F59E0B' },
-  { id: '3', name: 'Moradia', color: '#10B981' },
-  { id: '4', name: 'Lazer', color: '#3B82F6' },
-  { id: '5', name: 'Saúde', color: '#8B5CF6' },
-  { id: '6', name: 'Educação', color: '#EC4899' },
-  { id: '7', name: 'Outros', color: '#6B7280' },
+  { id: '1', name: 'Alimentação', color: '#FF6B6B' },
+  { id: '2', name: 'Transporte', color: '#4ECDC4' },
+  { id: '3', name: 'Moradia', color: '#45B7D1' },
+  { id: '4', name: 'Lazer', color: '#96CEB4' },
+  { id: '5', name: 'Saúde', color: '#FFEAA7' },
+  { id: '6', name: 'Educação', color: '#DDA0DD' },
+  { id: '7', name: 'Outros', color: '#98D8C8' },
 ];
 
 export const mockExpenses: Expense[] = [
