@@ -4,6 +4,7 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ExpenseForm from './ExpenseForm';
 import ExpenseChart from './ExpenseChart';
+import MonthlyExpenseChart from './MonthlyExpenseChart';
 import MonthlyGoal from './MonthlyGoal';
 import AIAssistant from './AIAssistant';
 import { mockExpenses, calculateExpenseSummary } from '@/utils/expenseUtils';
@@ -77,9 +78,14 @@ const ExpenseTracker: React.FC = () => {
             <MonthlyGoal currentSpending={summary.total} />
           </div>
           
-          {/* Expense Chart */}
+          {/* Expense Chart by Category */}
           <div className="animate-fade-in animate-delay-300">
             <ExpenseChart summary={summary} />
+          </div>
+          
+          {/* Monthly Expense Chart */}
+          <div className="lg:col-span-2 animate-fade-in animate-delay-400">
+            <MonthlyExpenseChart summary={summary} />
           </div>
         </div>
       </div>

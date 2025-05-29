@@ -11,40 +11,86 @@ export const defaultCategories = [
 ];
 
 export const mockExpenses: Expense[] = [
+  // Janeiro 2024
   {
     id: '1',
     description: 'Mercado',
     amount: 150.75,
     category: 'Alimentação',
-    date: new Date(2023, 6, 15),
+    date: new Date(2024, 0, 15),
   },
   {
     id: '2',
     description: 'Gasolina',
     amount: 80.00,
     category: 'Transporte',
-    date: new Date(2023, 6, 16),
+    date: new Date(2024, 0, 16),
   },
   {
     id: '3',
     description: 'Aluguel',
     amount: 1200.00,
     category: 'Moradia',
-    date: new Date(2023, 6, 5),
+    date: new Date(2024, 0, 5),
   },
+  // Fevereiro 2024
   {
     id: '4',
     description: 'Cinema',
     amount: 45.80,
     category: 'Lazer',
-    date: new Date(2023, 6, 20),
+    date: new Date(2024, 1, 20),
   },
   {
     id: '5',
     description: 'Farmácia',
     amount: 65.30,
     category: 'Saúde',
-    date: new Date(2023, 6, 22),
+    date: new Date(2024, 1, 22),
+  },
+  {
+    id: '6',
+    description: 'Supermercado',
+    amount: 180.50,
+    category: 'Alimentação',
+    date: new Date(2024, 1, 10),
+  },
+  // Março 2024
+  {
+    id: '7',
+    description: 'Uber',
+    amount: 25.00,
+    category: 'Transporte',
+    date: new Date(2024, 2, 8),
+  },
+  {
+    id: '8',
+    description: 'Restaurante',
+    amount: 85.90,
+    category: 'Alimentação',
+    date: new Date(2024, 2, 15),
+  },
+  {
+    id: '9',
+    description: 'Academia',
+    amount: 120.00,
+    category: 'Saúde',
+    date: new Date(2024, 2, 1),
+  },
+  // Abril 2024
+  {
+    id: '10',
+    description: 'Livros',
+    amount: 75.00,
+    category: 'Educação',
+    date: new Date(2024, 3, 12),
+  },
+  {
+    id: '11',
+    description: 'Feira',
+    amount: 95.40,
+    category: 'Alimentação',
+    date: new Date(2024, 3, 18),
   },
 ];
 
@@ -79,8 +125,8 @@ export const calculateExpenseSummary = (expenses: Expense[]): ExpenseSummary => 
     const category = expense.category;
     byCategory[category] = (byCategory[category] || 0) + expense.amount;
     
-    // Sum by month
-    const monthYear = `${expense.date.getMonth() + 1}/${expense.date.getFullYear()}`;
+    // Sum by month (format: MM/YYYY)
+    const monthYear = `${String(expense.date.getMonth() + 1).padStart(2, '0')}/${expense.date.getFullYear()}`;
     byMonth[monthYear] = (byMonth[monthYear] || 0) + expense.amount;
   });
   
