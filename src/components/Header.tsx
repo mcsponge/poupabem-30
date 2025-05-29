@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     <header className="w-full bg-background/70 backdrop-blur-md border-b border-border/50 sticky top-0 z-30 transition-all duration-300 ease-in-out">
       <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <span className="text-primary font-bold text-xl tracking-tight animate-fade-in">FinanceAI</span>
+          <span className="text-primary font-bold text-xl tracking-tight animate-fade-in">Poupabem</span>
         </div>
 
         <div className="flex items-center space-x-4">
